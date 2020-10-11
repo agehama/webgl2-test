@@ -32,5 +32,8 @@
     "transform": {
       ".*\\.(ts)$": "ts-jest"
     }
+  },
+  "dependencies": {
+    "node-gles": "0.0.17"
   }
 }
