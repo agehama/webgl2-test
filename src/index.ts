@@ -39,11 +39,16 @@ void main()
 `#version 300 es
 precision mediump float;
 
-out vec4 outColor;
+uniform vec2 u_resolution;
+out vec4 outColor[4];
 
 void main()
 {
-    outColor = vec4(0, 1, 0.5, 1);
+    vec2 xy = gl_FragCoord.xy / vec2(u_resolution);
+    outColor[0] = vec4(xy, 0.0, 1.0);
+    outColor[1] = vec4(xy, 0.25, 1.0);
+    outColor[2] = vec4(xy, 0.5, 1.0);
+    outColor[3] = vec4(xy, 0.75, 1.0);
 }`
         );
         gl.compileShader(fs);
@@ -72,23 +77,33 @@ void main()
 
     const width = 2;
     const height = 2;
+    const depth = 2;
     const texture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.bindTexture(gl.TEXTURE_3D, texture);
+    gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA, width, height, depth, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
     
     const fb = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+    for(let z = 0; z < 4; z++)
+    {
+        gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0 + z, texture, 0, z);
+    }
+    gl.drawBuffers([gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1, gl.COLOR_ATTACHMENT2, gl.COLOR_ATTACHMENT3]);
+
+    const locResolution = gl.getUniformLocation(program, 'u_resolution');
+    gl.uniform2f(locResolution, width, height);
     
     gl.viewport(0, 0, width, height);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     gl.flush();
 
     const pixels = new Uint8Array(4*width*height);
-    gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-    console.log(pixels);
+    for(let z = 0; z < 4; z++)
+    {
+        gl.readBuffer(gl.COLOR_ATTACHMENT0 + z);
+        gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+        console.log(pixels);
+    }
 
     return true;
 }
