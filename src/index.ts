@@ -43,7 +43,7 @@ out vec4 outColor;
 
 void main()
 {
-    outColor = vec4(0, 1, 0, 1);
+    outColor = vec4(0, 1, 0.5, 1);
 }`
         );
         gl.compileShader(fs);
@@ -80,6 +80,7 @@ void main()
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
     gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
     
+    gl.viewport(0, 0, width, height);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     gl.flush();
 
