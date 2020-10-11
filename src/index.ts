@@ -28,6 +28,7 @@ void main()
     const fs = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(fs, 
 `#version 300 es
+precision mediump float;
 
 out vec4 outColor;
 
