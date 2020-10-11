@@ -1,5 +1,4 @@
-import {add} from "../src/index";
-const nodeGles = require('node-gles');
+import {add, func} from "../src/index";
 
 test("add", () =>
 {
@@ -8,6 +7,5 @@ test("add", () =>
 
 test("gles", () =>
 {
-    const gl = nodeGles.createWebGLRenderingContext({});
-    expect(gl).not.toBeNull();
+    expect(func()).toBe(true);
 });
