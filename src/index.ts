@@ -43,7 +43,7 @@ out vec4 outColor;
 
 void main()
 {
-    outColor = vec4(1, 1, 0, 1);
+    outColor = vec4(0, 1, 0, 1);
 }`
         );
         gl.compileShader(fs);
@@ -70,8 +70,24 @@ void main()
         gl.useProgram(program);
     }
 
-    //gl.drawArrays(gl.TRIANGLES, 0, 6);
-    //gl.flush();
+    const width = 2;
+    const height = 2;
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    
+    const fb = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+    
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    gl.flush();
+
+    const pixels = new Uint8Array(4*width*height);
+    gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+    console.log(pixels);
 
     return true;
 }
