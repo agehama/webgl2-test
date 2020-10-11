@@ -81,7 +81,7 @@ void main()
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_3D, texture);
     gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA, width, height, depth, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
-    
+    /*
     const fb = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
     for(let z = 0; z < 4; z++)
@@ -104,6 +104,7 @@ void main()
         gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
         console.log(pixels);
     }
+    */
 
     return true;
 }
