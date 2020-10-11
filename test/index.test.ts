@@ -8,6 +8,6 @@ test("add", () =>
 
 test("gles", () =>
 {
-    const gl = nodeGles.binding.createWebGLRenderingContext();
+    const gl = nodeGles.createWebGLRenderingContext();
     expect(gl).not.toBeNull();
 });
