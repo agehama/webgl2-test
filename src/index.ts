@@ -1,3 +1,9 @@
+const main = document.getElementById("main");
+if(main != null)
+{
+    main.innerHTML = `<h1>test1</h1>`;
+}
+/*
 const nodeGles = require('node-gles');
 
 export const add = (a: number, b: number): number => a + b;
@@ -75,7 +81,6 @@ void main()
         gl.useProgram(program);
     }
 
-    /*
     const width = 2;
     const height = 2;
     const depth = 2;
@@ -105,7 +110,7 @@ void main()
         gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
         console.log(pixels);
     }
-    */
 
     return true;
 }
+*/
