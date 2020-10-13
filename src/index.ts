@@ -3,6 +3,11 @@ if(main != null)
 {
     main.innerHTML = `<h1>test1</h1>`;
 }
+
+function getString(): string
+{
+    return `test1 test2 test3`;
+}
 /*
 const nodeGles = require('node-gles');
 
