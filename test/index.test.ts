@@ -7,7 +7,7 @@ test("simple test", (async function()
     const chrome = await chromeLauncher.launch(
     {
         chromeFlags: [
-          '--headless',
+          //'--headless',
         ]
     });
 
