@@ -7,8 +7,8 @@
     "tsc": "tsc",
     "build": "webpack",
     "start": "webpack-dev-server",
-    "server": "http-server ./public -p 8080",
-    "test": "jest"
+    "server": "http-server ./public -p 8080 -c-1",
+    "test": "jest --no-cache"
   },
   "repository": {
     "type": "git",
