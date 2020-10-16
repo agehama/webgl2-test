@@ -81,7 +81,9 @@ void main()
     const depth = 4;
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_3D, texture);
-    gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA8UI, width, height, depth, 0, gl.RGBA_INTEGER, gl.UNSIGNED_BYTE, null);
+    gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA8UI, width, height, depth, 0, gl.RGBA_INTEGER, gl.UNSIGNED_BYTE);
+    //gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA8UI, width, height, depth, 0, gl.RGBA_INTEGER, gl.UNSIGNED_BYTE, null);
+    
     /*
     const fb = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
