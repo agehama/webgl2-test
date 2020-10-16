@@ -1,8 +1,8 @@
-const main = document.getElementById("main");
-if(main != null)
-{
-    main.innerHTML = `<h1>test1</h1>`;
-}
+// const main = document.getElementById("main");
+// if(main != null)
+// {
+//     main.innerHTML = `<h1>test1</h1>`;
+// }
 
 export function getString(): string[]
 {
