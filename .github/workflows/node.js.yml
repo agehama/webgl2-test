@@ -29,8 +29,6 @@ jobs:
         git clone https://github.com/agehama/node-gles.git
         cd node-gles
         npm i --no-optional
-        brew install tree
-        tree ./
         cd ../../
         npm ci
         npm run tsc
