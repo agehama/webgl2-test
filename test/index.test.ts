@@ -1,6 +1,6 @@
-const chromeLauncher = require('chrome-launcher');
-const chromeRemoteInterface = require('chrome-remote-interface');
-const puppeteer = require('puppeteer');
+//const chromeLauncher = require('chrome-launcher');
+//const chromeRemoteInterface = require('chrome-remote-interface');
+//const puppeteer = require('puppeteer');
 
 const nodeGles = require('./nodejs_gl_binding.node');
 import {webgl2TestFunc} from "../src/index";
