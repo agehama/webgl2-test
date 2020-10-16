@@ -4,12 +4,12 @@ if(main != null)
     main.innerHTML = `<h1>test1</h1>`;
 }
 
-function getString(): string[]
+export function getString(): string[]
 {
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-function webgl2TestFunc(gl: WebGL2RenderingContext): string
+export function webgl2TestFunc(gl: WebGL2RenderingContext): Uint8Array[]
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {
@@ -34,7 +34,7 @@ void main()
         if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(vs));
-            return "error";
+            return [];
         }
     }
 
@@ -60,7 +60,7 @@ void main()
         if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(fs));
-            return "error";
+            return [];
         }
     }
 
@@ -74,7 +74,7 @@ void main()
         if(!gl.getProgramParameter(program, gl.LINK_STATUS))
         {
             console.log(gl.getShaderInfoLog(program));
-            return "error";
+            return [];
         }
 
         gl.useProgram(program);
@@ -114,10 +114,11 @@ void main()
         results.push(pixels.slice());
     }
 
-    return JSON.stringify(results);
+    //return JSON.stringify(results);
+    return results;
 }
 
-function getString2(): string
+export function getString2(): string
 {
     return `test6 test7 test8`;
 }

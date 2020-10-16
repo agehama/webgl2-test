@@ -2,12 +2,15 @@ const chromeLauncher = require('chrome-launcher');
 const chromeRemoteInterface = require('chrome-remote-interface');
 const puppeteer = require('puppeteer');
 
-test("simple test", (async function()
+const nodeGles = require('node-gles');
+import {webgl2TestFunc} from "../src/index";
+
+/*test("simple test", (async function()
 {
     const chrome = await chromeLauncher.launch(
     {
         chromeFlags: [
-          //'--headless',
+          '--headless',
         ]
     });
 
@@ -57,11 +60,9 @@ test("simple test", (async function()
         });
     });
     return promise.then((result:boolean)=>{expect(result).toBeTruthy();});
-}), 60000);
+}), 60000);*/
 
-
-/*
-test("simple test", (async function()
+/*test("simple test", (async function()
 {
     const js = `(()=>{
         const canvas = document.getElementById("gl");
@@ -78,7 +79,7 @@ test("simple test", (async function()
         //const browser = await puppeteer.launch();
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['-—use-gl=egl']
+            //args: ['-—use-gl=egl']
           });
 
         const page = await browser.newPage();
@@ -86,7 +87,7 @@ test("simple test", (async function()
         const result = await page.evaluate(():any=>{
             return eval(`(()=>{
                 const canvas = document.getElementById("gl");
-                const gl = canvas.getContext("webgl2");
+                const gl = canvas.getContext("webgl2", {alpha: false, premultipliedAlpha: false});
                 if(!gl)
                 {
                     console.log("error: webgl2 context is null");
@@ -100,3 +101,11 @@ test("simple test", (async function()
     });
     return promise.then((result:boolean)=>{expect(result).toBeTruthy();});
 }), 60000);*/
+
+test("gles", () =>
+{
+    const gl = nodeGles.createWebGLRenderingContext({});
+    const reuslt = webgl2TestFunc(gl);
+    console.log(reuslt);
+    expect(reuslt == []).toBeFalsy();
+});
