@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm ci
-        dir .\node_modules\node-gles\
+        dir .\node_modules\node-gles\build\Release
         npm run tsc
         npm run server &
         npm test
