@@ -27,6 +27,8 @@ jobs:
     - run: |
         npm ci
         dir .\node_modules\node-gles\build\Release
+        cp .\node_modules\node-gles\build\Release\nodejs_gl_binding.node .\test\nodejs_gl_binding.node
+        dir .\test
         npm run tsc
         npm run server &
         npm test
