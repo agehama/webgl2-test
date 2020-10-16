@@ -28,8 +28,7 @@ jobs:
         cd temp
         git clone https://github.com/agehama/node-gles.git
         cd node-gles
-        npm i nan
-        npm i
+        npm i --no-optional
         cd ../../
         npm ci
         npm run tsc
