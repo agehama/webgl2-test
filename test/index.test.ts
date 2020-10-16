@@ -8,13 +8,13 @@ test("add", () =>
 
 test("gles 1", () =>
 {
-    const gl = nodeGles.createWebGLRenderingContext({});
+    const gl = nodeGles.createWebGLRenderingContext();
     expect(gl).not.toBeNull();
 });
 
 test("gles 2", () =>
 {
-    const gl = nodeGles.createWebGLRenderingContext({});
+    const gl = nodeGles.createWebGLRenderingContext({width: 1, height: 1});
     const result = func(gl);
     console.log(result);
     expect(result).toBe(`succeeded`);
