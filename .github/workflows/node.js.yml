@@ -32,5 +32,4 @@ jobs:
         cd ../../
         npm ci
         npm run tsc
-        npm run server &
         npm test

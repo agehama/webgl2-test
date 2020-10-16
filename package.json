@@ -8,7 +8,7 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "server": "http-server ./public -p 8080 -c-1",
-    "test": "jest --no-cache"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -40,10 +40,6 @@
     "moduleFileExtensions": [
       "ts",
       "js"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "temp"
     ],
     "transform": {
       ".*\\.(ts)$": "ts-jest"

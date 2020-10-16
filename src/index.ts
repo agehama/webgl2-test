@@ -4,6 +4,8 @@
 //     main.innerHTML = `<h1>test1</h1>`;
 // }
 
+export const add = (a: number, b: number): number => a + b;
+
 export function getString(): string[]
 {
     return [`test1 test2 ab`, `abc`, `test`];

@@ -4,7 +4,7 @@
 
 //const nodeGles = require('node-gles');
 const nodeGles = require('../temp/node-gles/build/Release/nodejs_gl_binding.node');
-import {webgl2TestFunc} from "../src/index";
+import {add, webgl2TestFunc} from "../src/index";
 
 /*test("simple test", (async function()
 {
@@ -103,7 +103,19 @@ import {webgl2TestFunc} from "../src/index";
     return promise.then((result:boolean)=>{expect(result).toBeTruthy();});
 }), 60000);*/
 
-test("gles", () =>
+
+test("add", () =>
+{
+    expect(add(1, 1)).toBe(2);
+});
+
+test("gles 1", () =>
+{
+    const gl = nodeGles.createWebGLRenderingContext({});
+    expect(gl).not.toBeNull();
+});
+
+test("gles 2", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext({});
     const result = webgl2TestFunc(gl);
