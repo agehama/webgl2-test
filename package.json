@@ -40,9 +40,6 @@
       "ts",
       "js"
     ],
-    "moduleNameMapper": {
-      ".*nodejs_gl_binding.*$": "<rootDir>/node_modules/node-gles/build/Release/nodejs_gl_binding.node"
-    },
     "transform": {
       ".*\\.(ts)$": "ts-jest"
     }
