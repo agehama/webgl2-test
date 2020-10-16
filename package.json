@@ -36,7 +36,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "jest": {
-    "automock": true,
     "moduleFileExtensions": [
       "ts",
       "js"
