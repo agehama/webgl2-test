@@ -9,7 +9,7 @@ export function getString(): string[]
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-export function webgl2TestFunc(gl: WebGL2RenderingContext): string
+export function webgl2TestFunc(gl: WebGL2RenderingContext): number[]
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {
@@ -32,7 +32,7 @@ void main()
         if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(vs));
-            return `error 1`;
+            return [];
         }
     }
 
@@ -56,7 +56,7 @@ void main()
         if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(fs));
-            return `error 2`;
+            return [];
         }
     }
 
@@ -70,20 +70,19 @@ void main()
         if(!gl.getProgramParameter(program, gl.LINK_STATUS))
         {
             console.log(gl.getShaderInfoLog(program));
-            return `error 3`;
+            return [];
         }
 
         gl.useProgram(program);
     }
 
-    return `succeeded`;
-    /*
     const width = 2;
     const height = 2;
     const depth = 4;
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_3D, texture);
     gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA8UI, width, height, depth, 0, gl.RGBA_INTEGER, gl.UNSIGNED_BYTE, null);
+    /*
     const fb = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
     for(let z = 0; z < 4; z++)
@@ -109,7 +108,11 @@ void main()
         results.push(pixels.slice());
     }
     //return JSON.stringify(results);
-    return results;*/
+
+    return results;
+    */
+
+    return [0, 1];
 }
 
 export function getString2(): string
