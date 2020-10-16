@@ -9,7 +9,7 @@ export function getString(): string[]
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-export function webgl2TestFunc(gl: WebGL2RenderingContext): Uint8Array[]
+export function webgl2TestFunc(gl: WebGL2RenderingContext): number[]
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {
@@ -34,7 +34,7 @@ void main()
         if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(vs));
-            return [];
+            return [0];
         }
     }
 
@@ -60,7 +60,7 @@ void main()
         if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(fs));
-            return [];
+            return [1];
         }
     }
 
@@ -74,12 +74,14 @@ void main()
         if(!gl.getProgramParameter(program, gl.LINK_STATUS))
         {
             console.log(gl.getShaderInfoLog(program));
-            return [];
+            return [2];
         }
 
         gl.useProgram(program);
     }
 
+    return [3];
+    /*
     const width = 2;
     const height = 2;
     const depth = 4;
@@ -115,7 +117,7 @@ void main()
     }
 
     //return JSON.stringify(results);
-    return results;
+    return results;*/
 }
 
 export function getString2(): string
