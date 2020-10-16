@@ -106,7 +106,7 @@ import {webgl2TestFunc} from "../src/index";
 test("gles", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext({});
-    const reuslt = webgl2TestFunc(gl);
-    console.log(reuslt);
-    expect(reuslt == []).toBeFalsy();
+    const result = webgl2TestFunc(gl);
+    console.log(result);
+    expect(result).toBe(`succeeded`);
 });
