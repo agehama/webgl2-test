@@ -9,7 +9,7 @@ export function getString(): string[]
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-export function webgl2TestFunc(gl: WebGL2RenderingContext): number[]
+export function webgl2TestFunc(gl: WebGL2RenderingContext): string
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {
@@ -34,7 +34,7 @@ void main()
         if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(vs));
-            return [0];
+            return `error 1`;
         }
     }
 
@@ -60,7 +60,7 @@ void main()
         if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
         {
             console.log(gl.getShaderInfoLog(fs));
-            return [1];
+            return `error 2`;
         }
     }
 
@@ -74,13 +74,13 @@ void main()
         if(!gl.getProgramParameter(program, gl.LINK_STATUS))
         {
             console.log(gl.getShaderInfoLog(program));
-            return [2];
+            return `error 3`;
         }
 
         gl.useProgram(program);
     }
 
-    return [3];
+    return `succeeded`;
     /*
     const width = 2;
     const height = 2;
