@@ -31,4 +31,6 @@ jobs:
         npm i --no-optional
         cd ../../
         npm ci
+        npm run tsc
+        npm run server &
         npm test
