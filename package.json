@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "webpack",
-    "start": "webpack-dev-server",
-    "server": "http-server ./public -p 8080 -c-1",
+    "server": "http-server",
     "test": "jest"
   },
   "repository": {
