@@ -6,5 +6,5 @@ test("simple (node-gles)", () =>
     const gl = nodeGles.createWebGLRenderingContext();
     const result = webglSimple(gl);
     console.log(result);
-    expect(result).not.toBe(``);
+    expect(result).not.toBe([]);
 });

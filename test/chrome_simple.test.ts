@@ -9,11 +9,6 @@ async function remoteEval(expr: string, port: number, chromeFlags: string[] = []
     const {Page, Runtime} = protocol;
     await Promise.all([Page.enable(), Runtime.enable()]);
 
-    Runtime.consoleAPICalled(({args: [{value}]}: any) =>
-    {
-        console.log(value);
-    });
-
     Page.navigate({url: `http://localhost:${port}`});
 
     return new Promise((resolve: (x:any) => void) =>
@@ -21,9 +16,6 @@ async function remoteEval(expr: string, port: number, chromeFlags: string[] = []
         Page.loadEventFired(async () =>
         {
             const {result: {value}} = await Runtime.evaluate({ expression: expr });
-
-            console.log(value);
-    
             protocol.close();
             chrome.kill(); 
             resolve(value);
@@ -31,7 +23,7 @@ async function remoteEval(expr: string, port: number, chromeFlags: string[] = []
     });
 }
 
-const call_webglSimple = `(()=>
+const call_webglSimple = `(() =>
 {
     const canvas = document.querySelector("canvas");
     const gl = canvas.getContext("webgl2");
@@ -43,6 +35,7 @@ test("simple (chrome headless)", (async function()
     return remoteEval(call_webglSimple, 8080, ['--headless']).then(
         (result:any) =>
         {
+            console.log(result);
             expect(`${result}`).not.toBe(``);
         });
 }), 60000);
@@ -52,6 +45,7 @@ test("simple (chrome browser)", (async function()
     return remoteEval(call_webglSimple, 8080, []).then(
         (result:any) =>
         {
+            console.log(result);
             expect(`${result}`).not.toBe(``);
         });
 }), 60000);
