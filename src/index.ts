@@ -13,20 +13,17 @@ export function webglSimple(gl: WebGL2RenderingContext): string
 {
     return [
         `gl.RENDERER: ${gl.getParameter(gl.RENDERER)}`,
-        `gl.VENDOR  : ${gl.getParameter(gl.VENDOR)}`,
         `gl.VERSION : ${gl.getParameter(gl.VERSION)}`,
         `---------------------------------`,
         `gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS: ${gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS)}`,
         `gl.MAX_CUBE_MAP_TEXTURE_SIZE       : ${gl.getParameter(gl.MAX_CUBE_MAP_TEXTURE_SIZE)}`,
         `gl.MAX_FRAGMENT_UNIFORM_VECTORS    : ${gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS)}`,
-        `gl.MAX_RENDERBUFFER_SIZE           : ${gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)}`,
         `gl.MAX_TEXTURE_IMAGE_UNITS         : ${gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)}`,
         `gl.MAX_TEXTURE_SIZE                : ${gl.getParameter(gl.MAX_TEXTURE_SIZE)}`,
         `gl.MAX_VARYING_VECTORS             : ${gl.getParameter(gl.MAX_VARYING_VECTORS)}`,
         `gl.MAX_VERTEX_ATTRIBS              : ${gl.getParameter(gl.MAX_VERTEX_ATTRIBS)}`,
         `gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS  : ${gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS)}`,
         `gl.MAX_VERTEX_UNIFORM_VECTORS      : ${gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS)}`,
-        `gl.MAX_VIEWPORT_DIMS               : ${gl.getParameter(gl.MAX_VIEWPORT_DIMS)}`,
     ].join('\n');
 }
 
