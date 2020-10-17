@@ -2,7 +2,7 @@
 //const chromeRemoteInterface = require('chrome-remote-interface');
 //const puppeteer = require('puppeteer');
 
-const nodeGles = require('node-gles');
+const nodeGles = require('../temp/node-gles/src/index');
 import {webgl2TestFunc} from "../src/index";
 
 /*test("simple test", (async function()
