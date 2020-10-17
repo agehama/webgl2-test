@@ -2,8 +2,7 @@
 //const chromeRemoteInterface = require('chrome-remote-interface');
 //const puppeteer = require('puppeteer');
 
-//const nodeGles = require('node-gles');
-const nodeGles = require('../temp/node-gles/build/Release/nodejs_gl_binding.node');
+const nodeGles = require('node-gles');
 import {webgl2TestFunc} from "../src/index";
 
 /*test("simple test", (async function()
@@ -94,12 +93,7 @@ import {webgl2TestFunc} from "../src/index";
 
 test("gles", () =>
 {
-    const width = 1;
-    const height = 1;
-    const majorVersion = 3;
-    const minorVersion = 0;
-    const webGLCompability = false;
-    const gl = nodeGles.createWebGLRenderingContext(width, height, majorVersion, minorVersion, webGLCompability);
+    const gl = nodeGles.createWebGLRenderingContext();
     const result = webgl2TestFunc(gl);
     console.log(result);
     expect(result).not.toBe([]);
