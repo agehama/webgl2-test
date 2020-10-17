@@ -38,11 +38,6 @@ void main()
 }`
         );
         gl.compileShader(vs);
-        if(!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
-        {
-            console.log(gl.getShaderInfoLog(vs));
-            return [];
-        }
     }
 
     const fs = gl.createShader(gl.FRAGMENT_SHADER) as WebGLShader;
@@ -61,28 +56,13 @@ void main()
 }`
         );
         gl.compileShader(fs);
-        if(!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
-        {
-            console.log(gl.getShaderInfoLog(fs));
-            return [];
-        }
     }
 
     const program = gl.createProgram() as WebGLProgram;
-    {
-        gl.attachShader(program, vs);
-        gl.attachShader(program, fs);
-
-        gl.linkProgram(program);
-
-        if(!gl.getProgramParameter(program, gl.LINK_STATUS))
-        {
-            console.log(gl.getShaderInfoLog(program));
-            return [];
-        }
-
-        gl.useProgram(program);
-    }
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    gl.useProgram(program);
 
     const width = 2;
     const height = 2;
@@ -98,13 +78,10 @@ void main()
         gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0 + z, texture, 0, z);
     }
     gl.drawBuffers([gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1, gl.COLOR_ATTACHMENT2, gl.COLOR_ATTACHMENT3]);
-    
-    gl.clearBufferuiv(gl.COLOR, 0, [0,0,0,0]);
-    gl.disable(gl.BLEND);
-    gl.disable(gl.DEPTH_TEST);
+
     gl.viewport(0, 0, width, height);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
-    gl.flush();
+
     let results = [];
     const pixels = new Uint8Array(4*width*height);
     for(let z = 0; z < 4; z++)
