@@ -13,7 +13,6 @@ export function webglSimple(gl: WebGL2RenderingContext): string
 {
     return [
         `gl.RENDERER: ${gl.getParameter(gl.RENDERER)}`,
-        `gl.VENDOR  : ${gl.getParameter(gl.VENDOR)}`,
         `gl.VERSION : ${gl.getParameter(gl.VERSION)}`,
         `---------------------------------`,
         `gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS: ${gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS)}`,
