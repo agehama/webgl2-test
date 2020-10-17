@@ -91,7 +91,7 @@ import {webglTexture3d} from "../src/index";
     return promise.then((result:boolean)=>{expect(result).toBeTruthy();});
 }), 60000);*/
 
-test("texture3d", () =>
+test("texture3d (node-gles)", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext();
     const result = webglTexture3d(gl);

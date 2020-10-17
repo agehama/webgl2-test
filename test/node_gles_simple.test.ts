@@ -1,7 +1,7 @@
 const nodeGles = require('node-gles');
 import {webglSimple} from "../src/index";
 
-test("simple", () =>
+test("simple (node-gles)", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext();
     const result = webglSimple(gl);

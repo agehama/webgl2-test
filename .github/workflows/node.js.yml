@@ -10,11 +10,28 @@ on:
     branches: [ main ]
 
 jobs:
+  chrome_simple:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        npm install -D chrome-launcher chrome-remote-interface http-server
+        npm run tsc
+        npm run server &
+        npm test -- chrome_simple
+
   node_gles_simple:
     runs-on: macos-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,13 +40,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm install -D node-gles
-        npm test -- node_gles_simple.test.ts
+        npm test -- node_gles_simple
 
   node_gles_texture3d:
     runs-on: macos-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -40,9 +57,7 @@ jobs:
         cd temp
         git clone https://github.com/agehama/node-gles.git
         cd node-gles
-        npm i --no-optional
+        npm install --no-optional
         cd ../../
-        npm ci
-        npm run tsc
-        npm run server &
-        npm test -- node_gles_texture3d.test.ts
+        npm install
+        npm test -- node_gles_texture3d
