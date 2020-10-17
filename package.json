@@ -23,6 +23,7 @@
   "homepage": "https://github.com/agehama/webgl2-test#readme",
   "devDependencies": {
     "@types/jest": "^26.0.14",
+    "http-server": "^0.12.3",
     "jest": "^26.5.2",
     "ts-jest": "^26.4.1",
     "ts-loader": "^8.0.4",

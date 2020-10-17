@@ -22,11 +22,29 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        npm install
-        npm install -D chrome-launcher chrome-remote-interface http-server
+        npm ci
+        npm install -D chrome-launcher chrome-remote-interface
         npm run tsc
         npm run server &
         npm test -- chrome_simple
+
+  chrome_texture3d:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        npm ci
+        npm install -D puppeteer jest-puppeteer
+        npm run tsc
+        npm run server &
+        npm test -- chrome_texture3d
 
   node_gles_simple:
     runs-on: macos-latest
@@ -40,7 +58,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        npm install
+        npm ci
         npm install -D node-gles
         npm test -- node_gles_simple
 
@@ -61,5 +79,5 @@ jobs:
         cd node-gles
         npm install --no-optional
         cd ../../
-        npm install
+        npm ci
         npm test -- node_gles_texture3d
