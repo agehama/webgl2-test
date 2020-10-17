@@ -22,6 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
+        npm install
         npm install -D chrome-launcher chrome-remote-interface http-server
         npm run tsc
         npm run server &
@@ -39,6 +40,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
+        npm install
         npm install -D node-gles
         npm test -- node_gles_simple
 
