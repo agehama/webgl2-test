@@ -9,7 +9,7 @@ export function getString(): string[]
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-export function webgl2TestFunc(gl: WebGL2RenderingContext): number[]
+export function webgl2TestFunc(gl: WebGL2RenderingContext): Uint8Array[]
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {
@@ -82,8 +82,7 @@ void main()
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_3D, texture);
     gl.texImage3D(gl.TEXTURE_3D, 0, gl.RGBA8UI, width, height, depth, 0, gl.RGBA_INTEGER, gl.UNSIGNED_BYTE, null);
-    
-    /*
+
     const fb = gl.createFramebuffer();
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
     for(let z = 0; z < 4; z++)
@@ -111,9 +110,6 @@ void main()
     //return JSON.stringify(results);
 
     return results;
-    */
-
-    return [0, 1];
 }
 
 export function getString2(): string
