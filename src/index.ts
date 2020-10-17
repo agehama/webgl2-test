@@ -9,7 +9,28 @@ export function getString(): string[]
     return [`test1 test2 ab`, `abc`, `test`];
 }
 
-export function webgl2TestFunc(gl: WebGL2RenderingContext): Uint8Array[]
+export function webglSimple(gl: WebGL2RenderingContext): string
+{
+    return [
+        `gl.RENDERER: ${gl.getParameter(gl.RENDERER)}`,
+        `gl.VENDOR  : ${gl.getParameter(gl.VENDOR)}`,
+        `gl.VERSION : ${gl.getParameter(gl.VERSION)}`,
+        `---------------------------------`,
+        `gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS: ${gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS)}`,
+        `gl.MAX_CUBE_MAP_TEXTURE_SIZE       : ${gl.getParameter(gl.MAX_CUBE_MAP_TEXTURE_SIZE)}`,
+        `gl.MAX_FRAGMENT_UNIFORM_VECTORS    : ${gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS)}`,
+        `gl.MAX_RENDERBUFFER_SIZE           : ${gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)}`,
+        `gl.MAX_TEXTURE_IMAGE_UNITS         : ${gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)}`,
+        `gl.MAX_TEXTURE_SIZE                : ${gl.getParameter(gl.MAX_TEXTURE_SIZE)}`,
+        `gl.MAX_VARYING_VECTORS             : ${gl.getParameter(gl.MAX_VARYING_VECTORS)}`,
+        `gl.MAX_VERTEX_ATTRIBS              : ${gl.getParameter(gl.MAX_VERTEX_ATTRIBS)}`,
+        `gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS  : ${gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS)}`,
+        `gl.MAX_VERTEX_UNIFORM_VECTORS      : ${gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS)}`,
+        `gl.MAX_VIEWPORT_DIMS               : ${gl.getParameter(gl.MAX_VIEWPORT_DIMS)}`,
+    ].join('\n');
+}
+
+export function webglTexture3d(gl: WebGL2RenderingContext): Uint8Array[]
 {
     const vs = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
     {

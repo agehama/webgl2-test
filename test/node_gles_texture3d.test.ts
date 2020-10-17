@@ -3,7 +3,7 @@
 //const puppeteer = require('puppeteer');
 
 const nodeGles = require('../temp/node-gles/src/index');
-import {webgl2TestFunc} from "../src/index";
+import {webglTexture3d} from "../src/index";
 
 /*test("simple test", (async function()
 {
@@ -91,10 +91,10 @@ import {webgl2TestFunc} from "../src/index";
     return promise.then((result:boolean)=>{expect(result).toBeTruthy();});
 }), 60000);*/
 
-test("gles", () =>
+test("texture3d", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext();
-    const result = webgl2TestFunc(gl);
+    const result = webglTexture3d(gl);
     console.log(result);
     expect(result).not.toBe([]);
 });

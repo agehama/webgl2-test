@@ -10,14 +10,26 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  node_gles_simple:
     runs-on: macos-latest
-
     strategy:
       matrix:
         node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        npm install -D node-gles
+        npm test -- node_gles_simple.test.ts
 
+  node_gles_texture3d:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -33,4 +45,4 @@ jobs:
         npm ci
         npm run tsc
         npm run server &
-        npm test
+        npm test -- node_gles_texture3d.test.ts
