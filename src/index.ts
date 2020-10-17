@@ -41,7 +41,6 @@ void main()
         gl.shaderSource(fs, 
 `#version 300 es
 precision mediump float;
-uniform vec2 u_resolution;
 out uvec4 outColor[4];
 void main()
 {
@@ -90,8 +89,6 @@ void main()
         gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0 + z, texture, 0, z);
     }
     gl.drawBuffers([gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1, gl.COLOR_ATTACHMENT2, gl.COLOR_ATTACHMENT3]);
-    const locResolution = gl.getUniformLocation(program, 'u_resolution');
-    gl.uniform2f(locResolution, width, height);
     
     gl.clearBufferuiv(gl.COLOR, 0, [0,0,0,0]);
     gl.disable(gl.BLEND);
