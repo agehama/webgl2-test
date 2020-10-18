@@ -1,10 +1,11 @@
 import {remoteEval} from "./chrome_helper";
+import {webglSimple} from "../src/index";
 
 const call_webglSimple = () => 
 {
     const canvas = document.querySelector("canvas");
     const gl = canvas.getContext("webgl2");
-    return webglSimple(gl);
+    return gl != null ? webglSimple(gl) : "";
 };
 
 test("simple (chrome headless)", (async function()
@@ -13,7 +14,7 @@ test("simple (chrome headless)", (async function()
         (result:any) =>
         {
             console.log(result);
-            expect(`${result}`).not.toBe(``);
+            expect(`${result}`).not.toBe("");
         });
 }), 60000);
 
@@ -23,6 +24,6 @@ test("simple (chrome browser)", (async function()
         (result:any) =>
         {
             console.log(result);
-            expect(`${result}`).not.toBe(``);
+            expect(`${result}`).not.toBe("");
         });
 }), 60000);
