@@ -77,7 +77,7 @@ jobs:
         cd temp
         git clone https://github.com/agehama/node-gles.git
         cd node-gles
-        npm install --no-optional
+        npm install
         cd ../../
         npm ci
         npm test -- node_gles_texture3d
