@@ -6,7 +6,7 @@ export async function remoteEval(expr: () => any, port: number, headless: boolea
     {
         const browser = await puppeteer.launch({ headless: headless, args: chromeFlags });
         const page = await browser.newPage();
-        await page.goto(`http://localhost:${port}`);
+        await page.goto(`http://localhost:${port}`, { waitUntil: 'domcontentloaded' });
 
         const result = await page.evaluate(expr);
 
