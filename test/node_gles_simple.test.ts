@@ -4,8 +4,8 @@ import {webglSimple} from "../src/index";
 test("simple (node-gles - ES 2.0)", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext({
-        client_major_es_version: 2,
-        client_minor_es_version: 0,
+        majorVersion: 2,
+        minorVersion: 0,
     });
     const result = webglSimple(gl);
     console.log(result);
@@ -15,8 +15,8 @@ test("simple (node-gles - ES 2.0)", () =>
 test("simple (node-gles - ES 3.0)", () =>
 {
     const gl = nodeGles.createWebGLRenderingContext({
-        client_major_es_version: 2,
-        client_minor_es_version: 0,
+        majorVersion: 3,
+        minorVersion: 0,
     });
     const result = webglSimple(gl);
     console.log(result);
