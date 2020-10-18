@@ -4,7 +4,7 @@ import {webglTexture3d} from "../src/index";
 const call_webglTexture3d = () =>
 {
     const canvas = document.querySelector("canvas");
-    const gl = canvas.getContext("webgl2");
+    const gl = canvas?.getContext("webgl2");
     return gl != null ? webglTexture3d(gl) : [];
 };
 

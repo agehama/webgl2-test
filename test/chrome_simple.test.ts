@@ -4,7 +4,7 @@ import {webglSimple} from "../src/index";
 const call_webglSimple = () => 
 {
     const canvas = document.querySelector("canvas");
-    const gl = canvas.getContext("webgl2");
+    const gl = canvas?.getContext("webgl2");
     return gl != null ? webglSimple(gl) : "";
 };
 
