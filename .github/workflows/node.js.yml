@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm ci
-        npm install -D chrome-launcher chrome-remote-interface
+        npm install -D puppeteer jest-puppeteer
         npm run tsc
         npm run server ./public -p 8080 &
         npm test -- chrome_simple
