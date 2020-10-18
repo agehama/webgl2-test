@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm ci
-        npm install -D puppeteer jest-puppeteer
+        npm install -D puppeteer
         npm run tsc
         npm run server ./public -p 8080 &
         npm test -- chrome_simple
@@ -41,7 +41,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm ci
-        npm install -D puppeteer jest-puppeteer
+        npm install -D puppeteer
         npm run tsc
         npm run server ./public -p 8080 &
         npm test -- chrome_texture3d
