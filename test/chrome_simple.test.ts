@@ -1,12 +1,11 @@
 import {remoteEval} from "./chrome_helper";
-import {webglSimple} from "../src/index";
 
-const call_webglSimple = () => 
+const call_webglSimple = () => eval(`(() =>
 {
     const canvas = document.querySelector("canvas");
-    const gl = canvas?.getContext("webgl2");
-    return gl != null ? webglSimple(gl) : "";
-};
+    const gl = canvas.getContext("webgl2");
+    return webglSimple(gl);
+})()`);
 
 test("simple (chrome headless)", (async function()
 {
